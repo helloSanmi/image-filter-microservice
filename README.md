@@ -81,4 +81,4 @@ eb deploy
 ```
 
 - AWS Elastic Beanstalk deployed application dashboard.
-  (.\deployment_screenshots\ElasticBeanstalk-image-filter.png)
+  ![alt text](./deployment_screenshots/ElasticBeanstalk-image-filter.PNG)

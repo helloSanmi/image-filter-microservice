@@ -33,9 +33,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
     //1. validate the image_url query
     let image_url = req.query.image_url.toString();
 
-    let isImage = validateURL(image_url)
-
-    if (isImage) {
+    if (image_url) {
         //2. call filterImageFromURL(image_url) to filter the image
         const filteredImage = await filterImageFromURL(image_url)
 
@@ -74,15 +72,3 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
   } );
 })();
 
-/* Helper function that check if a given url string is valid or not
- * Reference: https://stackoverflow.com/a/5717133
- */
-function validateURL(url: string): boolean {
-  const pattern = new RegExp('^(https?:\\/\\/)?' + // protocol
-      '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
-      '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
-      '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // port and path
-      '(\\?[;&a-z\\d%_.~+=-]*)?' + // query string
-      '(\\#[-a-z\\d_]*)?$', 'i'); // fragment locator
-  return !!pattern.test(url);
-}

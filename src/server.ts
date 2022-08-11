@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Response, Request } from 'express';
 import bodyParser from 'body-parser';
 import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
@@ -29,9 +29,9 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
   /**************************************************************************** */
 
-  app.get("/filteredimage", async (req, res) => {
+  app.get("/filteredimage", async (req:Request, res:Response) => {
     //1. validate the image_url query
-    let image_url = req.query.image_url.toString();
+    let image_url:string = req.query.image_url.toString();
 
     if (image_url) {
         //2. call filterImageFromURL(image_url) to filter the image
